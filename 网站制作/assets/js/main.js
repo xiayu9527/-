@@ -7,6 +7,9 @@
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
+  /* 图片版本号：图片有改动时 +1，强制浏览器丢弃旧缓存 */
+  var V = '?v=3';
+
   /* ---------------- 作品数据 ---------------- */
   var CAT_NAME = { keyvisual: '电商主图', detail: '详情页', poster: '海报', render: '三维渲染' };
 
@@ -221,7 +224,7 @@
 
     el.innerHTML =
       '<div class="work__media">' +
-        '<img src="assets/img/' + w.slug + '.jpg" alt="' + w.title + '｜' + w.tag + '" loading="lazy" decoding="async" width="1000" height="' + Math.round(1000 / w.ar) + '">' +
+        '<img src="assets/img/' + w.slug + '.jpg' + V + '" alt="' + w.title + '｜' + w.tag + '" loading="lazy" decoding="async" width="1000" height="' + Math.round(1000 / w.ar) + '">' +
         '<span class="work__cat">' + w.tag + '</span>' +
         '<div class="work__info">' +
           '<h3>' + w.title + '</h3>' +
@@ -314,7 +317,7 @@
     var idx = currentList[lbPos];
     var w = WORKS[idx];
     if (!w) return;
-    lbImg.src = 'assets/img/full/' + w.slug + '.jpg';
+    lbImg.src = 'assets/img/full/' + w.slug + '.jpg' + V;
     lbImg.alt = w.title + '｜' + w.tag;
     lbTitle.textContent = w.title;
     lbTag.textContent = CAT_NAME[w.cat] + ' / ' + w.tag;
@@ -417,8 +420,8 @@
     el.setAttribute('aria-valuemax', '100');
     el.setAttribute('aria-valuenow', '50');
     el.innerHTML =
-      '<img class="ba__after" src="assets/img/' + r.after + '.jpg" alt="' + r.title + ' 精修后" loading="lazy">' +
-      '<div class="ba__before"><img src="assets/img/' + r.before + '.jpg" alt="' + r.title + ' 精修前" loading="lazy"></div>' +
+      '<img class="ba__after" src="assets/img/' + r.after + '.jpg' + V + '" alt="' + r.title + ' 精修后" loading="lazy">' +
+      '<div class="ba__before"><img src="assets/img/' + r.before + '.jpg' + V + '" alt="' + r.title + ' 精修前" loading="lazy"></div>' +
       '<span class="ba__tag ba__tag--l">修前 BEFORE</span>' +
       '<span class="ba__tag ba__tag--r">修后 AFTER</span>' +
       '<div class="ba__handle" aria-hidden="true"></div>' +
