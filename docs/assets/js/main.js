@@ -268,7 +268,7 @@
   var currentList = [];
   var timers = [];
 
-  function setFilter(key) {
+  function setFilter(key, silent) {
     timers.forEach(clearTimeout);
     timers = [];
 
@@ -277,6 +277,8 @@
       if (match) {
         c.el.classList.remove('is-hidden');
         requestAnimationFrame(function () { c.el.classList.remove('is-out'); });
+      } else if (silent) {
+        c.el.classList.add('is-hidden');
       } else {
         c.el.classList.add('is-out');
         var t = setTimeout(function () { c.el.classList.add('is-hidden'); }, 220);
@@ -314,7 +316,9 @@
     setFilter(btn.dataset.filter);
   });
 
-  currentList = WORKS.map(function (w, i) { return i; });
+  /* 按筛选条上默认高亮的按钮初始化（首屏静默切换，不闪） */
+  var initBtn = filterBar.querySelector('.filter.is-on') || filterBar.querySelector('.filter');
+  setFilter(initBtn ? initBtn.dataset.filter : 'all', true);
 
   /* ---------------- 灯箱 ---------------- */
   var lb = $('#lb'), lbImg = $('#lbImg'), lbTitle = $('#lbTitle'), lbTag = $('#lbTag'),
