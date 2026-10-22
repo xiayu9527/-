@@ -69,7 +69,7 @@ sup{font-size:.55em;vertical-align:super;letter-spacing:.04em}
 .loader{
   position:fixed;inset:0;z-index:300;background:var(--ink);color:var(--paper);
   display:flex;flex-direction:column;justify-content:center;align-items:center;gap:28px;
-  transition:transform 1s var(--ease),opacity .6s ease;
+  transition:transform .55s var(--ease),opacity .3s ease;
 }
 .loader.is-done{transform:translateY(-101%);opacity:0;pointer-events:none}
 .loader__inner{display:flex;align-items:baseline;gap:18px;padding:0 24px}

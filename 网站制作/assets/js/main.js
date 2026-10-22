@@ -475,7 +475,7 @@
   var loader = $('#loader'), loaderNum = $('#loaderNum'), loaderBar = $('#loaderBar');
   var pct = 0;
   var tick = setInterval(function () {
-    pct = Math.min(100, pct + Math.random() * 18 + 6);
+    pct = Math.min(100, pct + Math.random() * 26 + 12);
     loaderNum.textContent = pad2(Math.round(pct));
     loaderBar.style.transform = 'scaleX(' + pct / 100 + ')';
     if (pct >= 100) {
@@ -483,10 +483,10 @@
       setTimeout(function () {
         loader.classList.add('is-done');
         document.body.classList.add('is-ready');
-        setTimeout(function () { loader.style.display = 'none'; }, 1100);
-      }, 220);
+        setTimeout(function () { loader.style.display = 'none'; }, 650);
+      }, 120);
     }
-  }, 110);
+  }, 60);
   if (reduceMotion) { clearInterval(tick); loader.classList.add('is-done'); loader.style.display = 'none'; }
 
   /* ---------------- 滚动相关 ---------------- */
