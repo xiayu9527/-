@@ -143,6 +143,11 @@ html.has-cursor .ba{cursor:none}
 }
 .head__nav a:hover::after,.head__nav a.is-active::after{transform:scaleX(1)}
 .head__nav a.is-active{color:var(--accent)}
+.head__nav a.head__cover{
+  padding:6px 14px;border:1px solid var(--accent);border-radius:999px;color:var(--accent);
+}
+.head__nav a.head__cover::after{display:none}
+.head__nav a.head__cover:hover{background:var(--accent);color:#fff}
 
 .logo{display:flex;align-items:center;gap:10px}
 .logo__mark{display:block;width:34px;height:34px;color:var(--ink);flex:none}
