@@ -614,7 +614,7 @@ button.copy:hover{color:var(--ink);background:var(--paper);border-color:var(--pa
 }
 .lb.lb--tall .lb__stage{align-items:flex-start;justify-content:flex-start}
 .lb.lb--tall .lb__fig{margin:0 auto}
-.lb.lb--tall .lb__fig img{max-height:none;max-width:min(86vw,760px);width:100%}
+.lb.lb--tall .lb__fig img{max-height:none;max-width:min(86vw,820px);width:auto;height:auto}
 .resume-lb.lb--tall .lb__fig img{max-width:min(94vw,820px)}
 .lb__nav{
   flex:none;width:42px;height:42px;border:1px solid rgba(233,227,216,.24);border-radius:50%;
