@@ -8,7 +8,7 @@
   var canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
   /* 图片版本号：图片有改动时 +1，强制浏览器丢弃旧缓存 */
-  var V = '?v=4';
+  var V = '?v=5';
 
   /* ---------------- 作品数据 ---------------- */
   var CAT_NAME = { keyvisual: '电商主图', detail: '详情页', poster: '海报', render: '三维渲染' };
@@ -66,12 +66,12 @@
       desc: '小件产品最怕没存在感：同心圆底台加大留白把它「抬」起来，橙色接口做画面唯一跳色。'
     },
     {
-      slug: 'main-powerbank-lotso', cat: 'keyvisual', span: 3, ar: 1,
+      slug: 'main-powerbank-lotso', cat: 'keyvisual', span: 3, ar: 0.75,
       title: 'LOTSO 自带双线充电宝', tag: '3C 主图',
       desc: '马卡龙粉整套配色，产品斜切摆放，线材盘在机身下——把「自带线」这个卖点变成构图。'
     },
     {
-      slug: 'main-powerbank-disney', cat: 'keyvisual', span: 3, ar: 1,
+      slug: 'main-powerbank-disney', cat: 'keyvisual', span: 3, ar: 0.75,
       title: '迪士尼磁吸充电宝', tag: '3C 主图',
       desc: '冷蓝底压住彩色 IP；磁吸、双线、USB 三个接口在画面里都看得见，卖点不用文字硬说。'
     },
@@ -135,37 +135,37 @@
 
     /* ---------- 海报 ---------- */
     {
-      slug: 'poster-humidifier', cat: 'poster', span: 4, ar: 0.75,
+      slug: 'poster-humidifier', cat: 'poster', span: 4, ar: 0.667,
       title: '森呼吸 润生活', tag: '产品海报',
       desc: '雨林实景加冷雾，产品放在苔藓石上；背景虚化压到 f2.8 的感觉，让白机身跳出来。'
     },
     {
-      slug: 'poster-watch-wrist', cat: 'poster', span: 4, ar: 0.75,
+      slug: 'poster-watch-wrist', cat: 'poster', span: 4, ar: 0.667,
       title: '智能随行 健康由我', tag: '产品海报',
       desc: '腕上场景，浅米色背景加侧逆光；表盘内容做亮，和皮肤拉开明度差。'
     },
     {
-      slug: 'poster-watch-track', cat: 'poster', span: 4, ar: 0.75,
+      slug: 'poster-watch-track', cat: 'poster', span: 4, ar: 0.667,
       title: '燃动每一刻', tag: '场景海报',
       desc: '跑道低机位仰拍加强光，产品悬空、投影落在跑道上；运动感靠光比，不靠动效。'
     },
     {
-      slug: 'poster-phone', cat: 'poster', span: 4, ar: 0.75,
+      slug: 'poster-phone', cat: 'poster', span: 4, ar: 0.667,
       title: '银灰人物 · 无字版', tag: '人物海报',
       desc: '银灰背景配半身人物，手机压在画面中心；一块柔光把机身纹理的菱形线条提出来。'
     },
     {
-      slug: 'poster-national', cat: 'poster', span: 4, ar: 0.75,
+      slug: 'poster-national', cat: 'poster', span: 4, ar: 0.559,
       title: '喜迎国庆', tag: '节日海报',
       desc: '红旗做前景框，金色立体字压在城楼上；暖调统一，节日感堆在材质上而不是堆元素。'
     },
     {
-      slug: 'poster-classroom', cat: 'poster', span: 4, ar: 0.75,
+      slug: 'poster-classroom', cat: 'poster', span: 4, ar: 0.667,
       title: '阳光记得我们来过', tag: '校园海报',
       desc: '一束斜射光穿过窗户，灰尘颗粒可见；文案压在画面下三分之一，克制一点更像海报。'
     },
     {
-      slug: 'poster-campus', cat: 'poster', span: 4, ar: 0.75,
+      slug: 'poster-campus', cat: 'poster', span: 4, ar: 0.667,
       title: '风把夏天吹得很长', tag: '校园海报',
       desc: '操场日落，暖橙天空压住冷绿草地；细体文案居中，留白留给天空。'
     },
@@ -187,12 +187,12 @@
       desc: '同一场景不贴材质，只看形体和光影关系——光位对了，才进最终渲染。'
     },
     {
-      slug: 'render-powerbank', cat: 'render', span: 4, ar: 0.75,
+      slug: 'render-powerbank', cat: 'render', span: 4, ar: 1,
       title: 'LOTSO 充电宝', tag: '产品渲染',
       desc: '粉色亚克力场景，两个角度同框；亮面壳体的高光要干净，所以灯箱开得很大。'
     },
     {
-      slug: 'render-thermos', cat: 'render', span: 4, ar: 0.75,
+      slug: 'render-thermos', cat: 'render', span: 4, ar: 0.632,
       title: '316 保温杯 · 俯视', tag: '产品渲染',
       desc: '绿色桌面做背景，俯视构图；杯口不锈钢的反射里能看到环境，接触阴影单独补一层。'
     }
@@ -232,6 +232,10 @@
           '<span class="work__view">VIEW PROJECT ↗</span>' +
         '</div>' +
         '<button class="work__open" data-cursor="VIEW" aria-label="查看作品：' + w.title + '"></button>' +
+      '</div>' +
+      '<div class="work__bar">' +
+        '<span class="work__no">' + (i < 9 ? '0' : '') + (i + 1) + '</span>' +
+        '<span class="work__ttl">' + w.title + '</span>' +
       '</div>';
 
     el.dataset.cursorHost = '1';
@@ -284,6 +288,20 @@
       return key === 'all' || WORKS[i].cat === key;
     });
     $('#workTotal').textContent = currentList.length;
+
+    /* 图注编号跟随当前筛选结果 */
+    var n = 0;
+    cards.forEach(function (c) {
+      var no = c.el.querySelector('.work__no');
+      if (!no) return;
+      if (key === 'all' || c.data.cat === key) {
+        n++;
+        no.textContent = (n < 10 ? '0' : '') + n;
+      } else {
+        var orig = Number(c.el.dataset.idx) + 1;
+        no.textContent = (orig < 10 ? '0' : '') + orig;
+      }
+    });
   }
 
   filterBar.addEventListener('click', function (e) {
