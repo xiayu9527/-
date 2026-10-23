@@ -8,7 +8,7 @@
   var canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
   /* 图片版本号：图片有改动时 +1，强制浏览器丢弃旧缓存 */
-  var V = '?v=5';
+  var V = '?v=7';
 
   /* ---------------- 作品数据 ---------------- */
   var CAT_NAME = { keyvisual: '电商主图', detail: '详情页', poster: '海报', render: '三维渲染' };
