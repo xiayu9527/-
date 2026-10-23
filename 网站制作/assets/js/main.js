@@ -325,16 +325,24 @@
       lbDesc = $('#lbDesc'), lbIndex = $('#lbIndex'), lbTotal = $('#lbTotal');
   var lbPos = 0;
 
-  /* 视网膜清晰：把图按设备像素比显示成物理 1:1，2 倍屏不再放大发虚 */
+  /* 视网膜清晰：灯箱图按设备像素比显示成物理 1:1，2 倍屏不再放大发虚 */
   function fitLbImg() {
-    if (!lbImg.naturalWidth) return;
+    if (!lbImg || !lbImg.naturalWidth) return;
     var dpr = Math.max(1, window.devicePixelRatio || 1);
     var cap = Math.min(window.innerWidth * 0.92, 1180);
     var w = Math.min(lbImg.naturalWidth / dpr, cap);
+    lbImg.style.maxWidth = 'none';
     lbImg.style.width = w + 'px';
     lbImg.style.height = 'auto';
   }
-  if (lbImg) lbImg.onload = fitLbImg;
+  function refitLb() {
+    if (!lbImg) return;
+    lbImg.onload = fitLbImg;            // 设 src 前先绑，保证本次加载必触发
+    if (lbImg.complete && lbImg.naturalWidth) fitLbImg(); // 缓存命中立即执行
+  }
+  window.addEventListener('resize', function () {
+    if (lb && lb.classList.contains('is-open')) fitLbImg();
+  });
 
   function openLb(idx) {
     lbPos = currentList.indexOf(idx);
@@ -350,7 +358,9 @@
     var idx = currentList[lbPos];
     var w = WORKS[idx];
     if (!w) return;
+    lbImg.onload = fitLbImg;
     lbImg.src = 'assets/img/full/' + w.slug + '.webp' + V;
+    if (lbImg.complete && lbImg.naturalWidth) fitLbImg();
     lbImg.alt = w.title + '｜' + w.tag;
     lbTitle.textContent = w.title;
     lbTag.textContent = CAT_NAME[w.cat] + ' / ' + w.tag;
