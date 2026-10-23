@@ -616,6 +616,24 @@ button.copy:hover{color:var(--ink);background:var(--paper);border-color:var(--pa
 .lb.lb--tall .lb__fig{margin:0 auto}
 .lb.lb--tall .lb__fig img{max-height:none;max-width:min(86vw,820px);width:auto;height:auto}
 .resume-lb.lb--tall .lb__fig img{max-width:min(94vw,820px)}
+
+/* 高分屏适配：按设备像素密度把灯箱图缩到物理 1:1，避免放大发虚（纯 CSS，不依赖 JS） */
+@media (min-resolution:1.25dppx){
+  .lb.lb--tall .lb__fig img{max-width:632px}
+  .lb.lb--land .lb__fig img{max-width:819px}
+}
+@media (min-resolution:1.5dppx){
+  .lb.lb--tall .lb__fig img{max-width:527px}
+  .lb.lb--land .lb__fig img{max-width:683px}
+}
+@media (min-resolution:2dppx){
+  .lb.lb--tall .lb__fig img{max-width:400px}
+  .lb.lb--land .lb__fig img{max-width:512px}
+}
+@media (min-resolution:3dppx){
+  .lb.lb--tall .lb__fig img{max-width:264px}
+  .lb.lb--land .lb__fig img{max-width:342px}
+}
 .lb__nav{
   flex:none;width:42px;height:42px;border:1px solid rgba(233,227,216,.24);border-radius:50%;
   color:var(--paper);font-size:15px;display:flex;align-items:center;justify-content:center;
