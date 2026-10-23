@@ -325,6 +325,17 @@
       lbDesc = $('#lbDesc'), lbIndex = $('#lbIndex'), lbTotal = $('#lbTotal');
   var lbPos = 0;
 
+  /* 视网膜清晰：把图按设备像素比显示成物理 1:1，2 倍屏不再放大发虚 */
+  function fitLbImg() {
+    if (!lbImg.naturalWidth) return;
+    var dpr = Math.max(1, window.devicePixelRatio || 1);
+    var cap = Math.min(window.innerWidth * 0.92, 1180);
+    var w = Math.min(lbImg.naturalWidth / dpr, cap);
+    lbImg.style.width = w + 'px';
+    lbImg.style.height = 'auto';
+  }
+  if (lbImg) lbImg.onload = fitLbImg;
+
   function openLb(idx) {
     lbPos = currentList.indexOf(idx);
     if (lbPos < 0) lbPos = 0;
